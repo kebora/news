@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:technews/constants.dart';
 import 'package:technews/settings.dart';
 import 'package:technews/widgets/news_updates.dart';
 import 'package:get/get.dart';
@@ -30,25 +31,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'News',
-      theme: GetStorage().read("theme") == false
-          ? ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-              useMaterial3: true,
-            )
-          : ThemeData.dark(useMaterial3: true).copyWith(
-              primaryColor: const Color(0xFF1DA1F2),
-              scaffoldBackgroundColor: const Color(0xFF1C1E21),
-              cardColor: const Color(0xFF66757F),
-              dividerColor: const Color(0xFF4A4D4E),
-              highlightColor: const Color(0xFF4A4D4E),
-              splashColor: const Color(0xFF4A4D4E),
-              unselectedWidgetColor: const Color(0xFF8899A6),
-              iconTheme: const IconThemeData(color: Colors.white),
-              floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                backgroundColor: Color(0xFFFFAD1F),
-                foregroundColor: Colors.black,
-              ),
-            ),
+      theme:
+          GetStorage().read("theme") == false ? lightThemeData : darkThemeData,
       home: const HomePage(),
     );
   }

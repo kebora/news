@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -128,47 +127,19 @@ class SettingsView extends StatelessWidget {
             ),
           ),
           ListTile(
-              leading: Icon(
-                Icons.sunny_snowing,
-                color: Colors.red[200],
-              ),
-              title: const Text(
-                "Change App Theme",
-              ),
-              subtitle: const Text(
-                "Change between dark and light themes",
-                style: TextStyle(fontFamily: "Montserrat"),
-              ),
-              onTap: () {
-                //
-                Get.isDarkMode
-                    ? GetStorage().write("theme", false)
-                    : GetStorage().write("theme", true);
-                //
-                Get.changeTheme(
-                  Get.isDarkMode
-                      ? ThemeData(
-                          colorScheme:
-                              ColorScheme.fromSeed(seedColor: Colors.red),
-                          useMaterial3: true,
-                        )
-                      : ThemeData.dark(useMaterial3: true).copyWith(
-                          primaryColor: const Color(0xFF1DA1F2),
-                          scaffoldBackgroundColor: const Color(0xFF1C1E21),
-                          cardColor: const Color(0xFF66757F),
-                          dividerColor: const Color(0xFF4A4D4E),
-                          highlightColor: const Color(0xFF4A4D4E),
-                          splashColor: const Color(0xFF4A4D4E),
-                          unselectedWidgetColor: const Color(0xFF8899A6),
-                          iconTheme: const IconThemeData(color: Colors.white),
-                          floatingActionButtonTheme:
-                              const FloatingActionButtonThemeData(
-                            backgroundColor: Color(0xFFFFAD1F),
-                            foregroundColor: Colors.black,
-                          ),
-                        ),
-                );
-              }),
+            leading: Icon(
+              Icons.sunny_snowing,
+              color: Colors.red[200],
+            ),
+            title: const Text(
+              "Change App Theme",
+            ),
+            subtitle: const Text(
+              "Change between dark and light themes",
+              style: TextStyle(fontFamily: "Montserrat"),
+            ),
+            onTap: () => saveCurrentTheme(),
+          ),
           ListTile(
             leading: Icon(
               Icons.close_rounded,
@@ -204,4 +175,15 @@ class SettingsView extends StatelessWidget {
       ),
     );
   }
+}
+
+void saveCurrentTheme() {
+  Get.changeTheme(
+    Get.isDarkMode ? lightThemeData : darkThemeData,
+  );
+  //
+  Get.isDarkMode
+      ? GetStorage().write("theme", false)
+      : GetStorage().write("theme", true);
+  //
 }
