@@ -17,7 +17,7 @@ void main() async {
     await GetStorage().write("theme", false);
   }
   if (!GetStorage().hasData("category")) {
-    GetStorage().write("category", 'Technology');
+    GetStorage().write("category", 'science');
   }
 
   ///

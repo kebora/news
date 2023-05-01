@@ -98,7 +98,7 @@ class SettingsView extends StatelessWidget {
                 title: TextField(
                   onChanged: categoryController.onChanged,
                   decoration: InputDecoration(
-                    hintText: "E.g. Technology",
+                    hintText: "E.g. Science",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
