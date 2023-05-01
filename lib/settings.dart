@@ -28,8 +28,8 @@ class SettingsView extends StatelessWidget {
     //AdMob
     RewardedAd? rewardedAd;
     //
-    final adUnitId = Platform.isAndroid ? testAdUnitId : productionAdUnitId;
-    // final adUnitId = productionAdUnitId;
+    // final adUnitId = Platform.isAndroid ? testAdUnitId : productionAdUnitId;
+    final adUnitId = productionAdUnitId;
 
     //load ad function
     /// Loads a rewarded ad.
